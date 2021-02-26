@@ -39,7 +39,7 @@ module.exports = {
           verbose: true,
           schema : {
             timeout: 200000,
-            requestConcurrency: 10,
+            requestConcurrency: 8,
           },
       },
     },
