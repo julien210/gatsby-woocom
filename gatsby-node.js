@@ -49,14 +49,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 const produit = await graphql(`
 {
-    allWpComment {
+    allWpProduct {
       nodes {
         id
         databaseId
-        date(fromNow: true)
-        content
-        approved
-        authorIp
+        name
+        reviewCount
       }
     }
   }
@@ -64,7 +62,7 @@ const produit = await graphql(`
       if (resultProduit.errors) {
         Promise.reject(resultProduit.errors)
       }
-    resultProduit.data. allWpComment.nodes.forEach(k => {
+    resultProduit.data. allWpProduct.nodes.forEach(k => {
       createPage ({
         path: `/commerce/${k.name}`,
         component: TemplateProductReview,

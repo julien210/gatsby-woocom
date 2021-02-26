@@ -7,7 +7,6 @@ const Login = (props) =>{
 const [token, setToken] = useState([])
 const [loggedIn , setLoggedIn ] = useState(false)
 
-localStorage.setItem('userToken', "poi" )
 
 const onSubmit =  (data) => {
    async  function fetchData  () {
@@ -29,14 +28,18 @@ const onSubmit =  (data) => {
     const { register, handleSubmit, watch, errors } = useForm();
 
     console.log(watch("password"))
-    if (loggedIn || localStorage.getItem('token')) {
-       return <> {navigate('/'+'dashboard')}</>
-    }else{
+   //  if (loggedIn || localStorage.getItem('token')) {
+   //   if(token !== undefined && typeof window !== 'undefined'){                              //? pour passer le  build
+   // if (localStorage.getItem('token')) {   
+   // console.log(token)
+   //       // return <> {navigate('/'+'postsAdmin')}</>                                        //  voila
+   //       return<>{console.log('token?')}</>
+   //  }else{
 
     return (
          <>
             {console.log(token)}
-            {token.token !== null ? (localStorage.setItem('userNiceName', token.user_nicename ) ,
+            {(token.token !== null && typeof window !== 'undefined') ? (localStorage.setItem('userNiceName', token.user_nicename ) ,
                                      localStorage.setItem('userToken', token.token ),
                                      localStorage.setItem('userEmail', token.user_email))
                                     :'' }
@@ -49,7 +52,7 @@ const onSubmit =  (data) => {
         
       </>
       );
-   }
+ //  }
 }
 
 export default Login

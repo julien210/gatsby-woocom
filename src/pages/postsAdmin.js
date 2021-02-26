@@ -1,10 +1,18 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
 
-const userNiceName = localStorage.getItem('userNiceName')
-const token = localStorage.getItem('userToken')
+let  userNiceName
+let token 
+
+
 
 function Post   () {
+
+    if (typeof window !== 'undefined'){
+        userNiceName = localStorage.getItem('userNiceName') 
+        token = localStorage.getItem('userToken')
+     }
+
     const { register, handleSubmit, watch, errors } = useForm();     
     const onSubmit = data => {
         let formData= {

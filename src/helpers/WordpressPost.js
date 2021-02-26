@@ -4,22 +4,30 @@ import Img from 'gatsby-image'
 import { useForm } from "react-hook-form";
 
 
-const email = localStorage.getItem('userEmail');
-// const authorId =localStorage.getItem('userId');    
-const userNiceName = localStorage.getItem('userNiceName')
-const token = localStorage.getItem('userToken')
+// const email = localStorage.getItem('userEmail');
+// // const authorId =localStorage.getItem('userId');    
+// const userNiceName = localStorage.getItem('userNiceName')
+// const token = localStorage.getItem('userToken')
 
+let email, userNiceName, token
 
 const WpPost = (k) => {
+
+
 const { register, handleSubmit, watch, errors } = useForm();  
 
 // console.log(k.pageContext);
 // console.log(k.pageContext.k.databaseId);
- 
-console.log(k)
+//console.log(k)
 
 
 const onSubmit = data => {
+  if (typeof window !== 'undefined'){
+    email = localStorage.getItem('userEmail');  
+    userNiceName = localStorage.getItem('userNiceName')
+    token = localStorage.getItem('userToken')
+  }
+
   let formData= {
       post:  k.pageContext.k.databaseId,
       // author: authorId,

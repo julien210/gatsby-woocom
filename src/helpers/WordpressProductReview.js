@@ -5,16 +5,17 @@ import {  useStaticQuery, graphql } from "gatsby"
 import { useForm } from "react-hook-form";
 
 
-const email = localStorage.getItem('userEmail');  
-const userNiceName = localStorage.getItem('userNiceName')
-const token = localStorage.getItem('userToken')
+// const email = localStorage.getItem('userEmail');  
+// const userNiceName = localStorage.getItem('userNiceName')
+// const token = localStorage.getItem('userToken')
+
+let  email , userNiceName , token 
 
 
 export default function (k) {
 
-    const { register, handleSubmit, watch, errors } = useForm();  
 
-
+const { register, handleSubmit, watch, errors } = useForm();  
 const  commentaires =  useStaticQuery( graphql`
 {
     com :   allWpComment {
@@ -31,6 +32,12 @@ const  commentaires =  useStaticQuery( graphql`
     console.log(commentaires)
     
 const onSubmit = data => {
+    if (typeof window !== 'undefined'){
+        email = localStorage.getItem('userEmail');  
+        userNiceName = localStorage.getItem('userNiceName')
+        token = localStorage.getItem('userToken')
+    }
+
     let formData= {
         post:  k.pageContext.k.databaseId,
         author_email: email,
