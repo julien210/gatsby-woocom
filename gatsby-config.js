@@ -38,7 +38,8 @@ module.exports = {
         url: `https://teshrd.tk/graphql`,
           verbose: true,
           schema : {
-            timeout: 2000000,
+            timeout: 200000,
+            requestConcurrency: 10,
           },
       },
     },
