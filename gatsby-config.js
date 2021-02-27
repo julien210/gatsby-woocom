@@ -39,7 +39,8 @@ module.exports = {
           verbose: true,
           schema : {
             timeout: 200000,
-            requestConcurrency: 8,
+            requestConcurrency: 1,
+            concurrentRequests: 1,
           },
             debug: {
           // these settings are all the defaults,
