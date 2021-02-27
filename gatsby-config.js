@@ -41,6 +41,18 @@ module.exports = {
             timeout: 200000,
             requestConcurrency: 8,
           },
+            debug: {
+          // these settings are all the defaults,
+          // remove them if you'd like
+          graphql: {
+            showQueryOnError: false,
+            showQueryVarsOnError: true,
+            copyQueryOnError: true,
+            panicOnError: true,
+            // a critical error is a WPGraphQL query that returns an error and no response data. Currently WPGQL will error if we try to access private posts so if this is false it returns a lot of irrelevant errors.
+            onlyReportCriticalErrors: true,
+          },
+        },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
