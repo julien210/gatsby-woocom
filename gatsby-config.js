@@ -35,7 +35,7 @@ module.exports = {
      {
       resolve: `gatsby-source-wordpress`,
       options :{
-        url: `https://teshrd.tk/graphql`,
+        url: `http://72d1dea006ad.ngrok.io/graphql`,
           verbose: true,
           schema : {
             timeout: 2000000,
