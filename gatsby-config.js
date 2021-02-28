@@ -35,11 +35,11 @@ module.exports = {
      {
       resolve: `gatsby-source-wordpress`,
       options :{
-        url: `http://72d1dea006ad.ngrok.io/graphql`,
+        url: `https://fredpack69.000webhostapp.com/graphql`,
           verbose: true,
           schema : {
             timeout: 2000000,
-            requestConcurrency: 1,
+            requestConcurrency: 5,
           },
             debug: {
           // these settings are all the defaults,
