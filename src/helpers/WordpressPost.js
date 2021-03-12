@@ -30,7 +30,7 @@ const onSubmit = data => {
 
   let formData= {
       post:  k.pageContext.k.databaseId,
-      // author: authorId,
+      // author: authorId,  
       author_email: email,
       author_name: userNiceName,
       date : new Date(),
@@ -38,7 +38,7 @@ const onSubmit = data => {
   }
   console.log(formData)
   const fetchData = async () => {
-      const result = await fetch(`https:teshrd.tk/wp-json/wp/v2/comments/`, {
+      const result = await fetch(`https://portaildemo69.000webhostapp.com/wp-json/wp/v2/comments/`, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ const onSubmit = data => {
         <input type="submit" />   
         </form>  
       </Box>
-    </div>
+    </div>  
 
   )
 }

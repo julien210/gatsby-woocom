@@ -1,7 +1,7 @@
 const path = require('path')
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
-  const Template = path.resolve(`src/helpers/WordpressPost.js`)
+  const TemplatePost = path.resolve(`src/helpers/WordpressPost.js`)
   const TemplateProductReview = path.resolve(`src/helpers/WordpressProductReview.js`)
 
   const {createPage} = actions
@@ -38,7 +38,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     createPage ({
       // path: `/post/${id+1}`,
       path: `/post/${k.title}`,
-      component: Template,
+      component: TemplatePost,
       context: {
         title: k.title,
         k:k,
@@ -55,6 +55,13 @@ const produit = await graphql(`
         databaseId
         name
         reviewCount
+          sku
+        image{
+          guid
+          mediaItemUrl
+          slug
+          description
+        }
       }
     }
   }
@@ -62,7 +69,7 @@ const produit = await graphql(`
       if (resultProduit.errors) {
         Promise.reject(resultProduit.errors)
       }
-    resultProduit.data. allWpProduct.nodes.forEach(k => {
+    resultProduit.data.allWpProduct.nodes.forEach(k => {
       createPage ({
         path: `/commerce/${k.name}`,
         component: TemplateProductReview,
@@ -76,6 +83,6 @@ const produit = await graphql(`
     })
   })
 
-return Promise.all([ post, produit])
-
+//return Promise.all([ post, produit])
+return  Promise.all([produit, post])
   }

@@ -32,13 +32,15 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-     {
-      resolve: `gatsby-source-wordpress`,
+    { 
+    resolve: `gatsby-source-wordpress`,
       options :{
-        url: `https://teshrd.tk/graphql`,
+        url: `https://portaildemo69.000webhostapp.com/graphql`,
           verbose: true,
           schema : {
+            requestConcurrency: 3,
             timeout: 2000000,
+            perPage: 10,
           },
       },
     },

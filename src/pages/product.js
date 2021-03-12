@@ -12,7 +12,6 @@ import  CustomizedRating from '../components//pricing/rating'
 import Divider from '@material-ui/core/Divider';
 import {  useStaticQuery, graphql } from "gatsby"
 import { useForm } from "react-hook-form";
-import Button from '@material-ui/core/Button';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     margin: 'auto',
-    maxWidth: 600,
+    maxWidth: 500,
   },
   image: {
     width: '128',
@@ -35,8 +34,7 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: '100%',
   },
   drawerPaper: {
-    backgroundImage: 'url(' + drawerImage + ')',
-    marginBottom: '4rem',
+    backgroundImage: 'url(' + drawerImage + ')'
   },
   cardHeader: {
     paddingTop: theme.spacing(3),
@@ -68,20 +66,15 @@ const useStyles = makeStyles((theme) => ({
   }, 
   price: {
     color: 'purple',
-    fontSize: '1.8rem',
-    fontWeight: '700',
+    fontSize: '2rem',
   }
 }));
 
-export default function (k) {
+export default function ComplexGrid(k) {
 
 const { register, handleSubmit, watch, errors } = useForm();  
 
 let  email , userNicename , token      
-
-const handleclickImage=(e)=>{
-    console.log(e.currenTarget);
-}
 
 const onSubmit = data => {
   if (typeof window !== 'undefined'){
@@ -123,7 +116,7 @@ const onSubmit = data => {
             <Typography variant="overline" color="textSecondary">gatsby  wordpress woocommerce le Combo gagnant </Typography>
             <Typography variant="h3" component="h2" gutterBottom={true}>
             </Typography>
-            <Typography variant="h4" color="primary" paragraph={true}>
+            <Typography variant="subtitle1" color="textSecondary" paragraph={true}>
             Une Histoire de Chats !
             </Typography>
       </Box>
@@ -132,10 +125,8 @@ const onSubmit = data => {
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
           <Grid item>
-            <ButtonBase className={classes.image} onClick={handleclickImage}>
-              <img className={classes.img} alt="complex" 
-              src= {k.pageContext.k.image.guid}
-              />
+            <ButtonBase className={classes.image}>
+              <img className={classes.img} alt="complex" src={im} />
             </ButtonBase>
           </Grid>
           <Grid item xs container direction="column" spacing={2}>
@@ -144,30 +135,24 @@ const onSubmit = data => {
                 Standard license
               </Typography>
               <Typography variant="body2" gutterBottom>
-                sku : {k.pageContext.k.sku}
+                Full resolution 1920x1080 • JPEG
               </Typography>
               <Typography variant="body2" color="textSecondary">
                 ID: 1030114
               </Typography>
             </Grid>
           </Grid>
-          <Typography className={classes.price} variant="subtitle1" color="secondary">
-              $19.00
-          </Typography>
+          <Typography className={classes.price} variant="subtitle1">$19.00</Typography>
         </Grid>
         <Divider />
         <Box p={3} textAlign="center">
-        <Button variant="contained" color="secondary">panier</Button>
-        <Typography variant="body2" gutterBottom style={{marginTop:'1rem'}}>
-            {k.pageContext.k.image.slug}
-        </Typography>
-            <CustomizedRating />
+          <CustomizedRating />
         </Box>
       </Paper>
     </div>
-    <Paper className={classes.paper} style={{marginTop :'1rem'}}>
+    <Paper className={classes.paper}>
     <Typography variant="body2" gutterBottom>
-     {k.pageContext.name} ... une remarque ?
+      Laisser un commentaire ... {k.pageContext.name}
     </Typography>
     {/* <p>{k.pageContext.reviewCount}</p> */}
     <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>

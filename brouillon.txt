@@ -1,0 +1,36 @@
+
+
+  ***************************
+  avec unchiffrement  https  complet   entre  000webhost et cloudfare  verifier  chez  clodfare et  et   qu on a allow  headers * ds googlechrome develop
+
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+# END WordPress
+
+Header add  Access-Control-Allow-Origin "*"
+
+Header add Access-Control-Allow-Methods "GET, POST, DELETE, OPTIONS"
+
+Header add Access-Control-Allow-Headers "Content-Type, x-requested-with"
+
+Header add Access-Control-Request-Headers "Authorization, Content-Type"
+.............................
+
+
+define('JWT_AUTH_SECRET_KEY', 'supersecrxxetkey');
+define( 'WP_MEMORY_LIMIT', '512M' );
+define('JWT_AUTH_CORS_ENABLE', true);
