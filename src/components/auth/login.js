@@ -29,32 +29,12 @@ const onSubmit =  (data) => {
    fetchData()
 }
 
-//const onSubmit =  (data) => {
-
-//    function fetchData  () {
-      
-//       let donnees = new FormData();
-//          donnees.append('username' , `${data.username}`)
-//          donnees.append('password',  `${data.password}`)
-//          const cli =  new XMLHttpRequest()
-//          cli.open('POST', 'https://portaildemo69.000webhostapp.com/wp-json/jwt-auth/v1/token', true)
-//          cli.onload = function () {
-//             setToken(cli) 
-//             }
-//          cli.send(donnees)
-//          return cli
-//    }
-// fetchData()
-//}
-
 
 const { register, handleSubmit, watch, errors } = useForm();
-//    console.log(watch("password"))
 
  
      return (
          <>
-            {/* {itoken.status === 200  && (localStorage.setItem('userTokenWordpress', itoken.response )) } */}
             { itoken.token !== undefined  && (
                localStorage.setItem('userToken', itoken.token),
                localStorage.setItem('userEmail', itoken.user_email),
