@@ -4,25 +4,32 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import im from '../images/gatsby-astronaut.png'
+//import im from '../images/gatsby-astronaut.png'
 import drawerImage from '../nereus-assets/img/bg/pattern1.png';
 import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
-import  CustomizedRating from '../components//pricing/rating'
+//import Container from '@material-ui/core/Container';
+import  CustomizedRating from '../components/pricing/rating'
 import Divider from '@material-ui/core/Divider';
-import {  useStaticQuery, graphql } from "gatsby"
+//import {  useStaticQuery, graphql } from "gatsby"
 import { useForm } from "react-hook-form";
 import Button from '@material-ui/core/Button';
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: '1rem',
     margin: 'auto',
     maxWidth: 600,
+    backgroundColor:'transparent',
+  },
+  paperMiddle: {
+    padding: '1rem',
+    margin: 'auto',
+    marginTop: '2rem',
+    maxWidth: 600,
+    backgroundColor:'white',
   },
   image: {
     width: '128',
@@ -67,14 +74,14 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: '10px'
   }, 
   price: {
-    color: 'purple',
+    color: 'orange',
     fontSize: '1.8rem',
-    fontWeight: '700',
   }
 }));
 
 export default function (k) {
 
+console.log(k);
 const { register, handleSubmit, watch, errors } = useForm();  
 
 let  email , userNicename , token      
@@ -138,6 +145,10 @@ const onSubmit = data => {
               />
             </ButtonBase>
           </Grid>
+        </Grid>
+      </Paper>
+      <Paper className={classes.paperMiddle}>
+        <Grid container spacing={2}>
           <Grid item xs container direction="column" spacing={2}>
             <Grid item xs>
               <Typography gutterBottom variant="subtitle1">
@@ -157,17 +168,19 @@ const onSubmit = data => {
         </Grid>
         <Divider />
         <Box p={3} textAlign="center">
-        <Button variant="contained" color="secondary">panier</Button>
-        <Typography variant="body2" gutterBottom style={{marginTop:'1rem'}}>
+          <Button variant="contained" color="secondary">
+            panier
+          </Button>
+          <Typography variant="body2" gutterBottom style={{marginTop:'1rem'}}>
             {k.pageContext.k.image.slug}
-        </Typography>
-            <CustomizedRating />
+          </Typography>
+          <CustomizedRating />
         </Box>
       </Paper>
     </div>
     <Paper className={classes.paper} style={{marginTop :'1rem'}}>
-    <Typography variant="body2" gutterBottom>
-     {k.pageContext.name} ... une remarque ?
+    <Typography variant="body2" gutterBottom style={{color: 'orange',    fontStyle: 'italic'}}>
+     {k.pageContext.name} ... Des Suggestions ?
     </Typography>
     {/* <p>{k.pageContext.reviewCount}</p> */}
     <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
